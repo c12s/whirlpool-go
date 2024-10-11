@@ -20,10 +20,31 @@ const (
 	Startup
 )
 
+type ProbeMethod interface {
+	Perform() error
+}
+
+type HttpProbe struct {
+	path string
+	port int32
+}
+
+func (http *HttpProbe) Perform() error {
+	return nil
+}
+
+type RPCProbe struct {
+	port int32
+}
+
+func (rpc *RPCProbe) Perform() error {
+	return nil
+}
+
 type Probe struct {
-	probeType       ProbeType
-	intervalSeconds float32
-	delaySeconds    float32
+	probeType           ProbeType
+	intervalSeconds     float32
+	startupDelaySeconds float32
 }
 
 func New(settings []ProbeSettings) *WhirlPool {
