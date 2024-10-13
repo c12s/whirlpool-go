@@ -1,0 +1,8 @@
+services:
+  rest-server:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - test-net
+
