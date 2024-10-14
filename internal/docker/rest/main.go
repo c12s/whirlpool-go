@@ -1,4 +1,4 @@
-package test_rest
+package main
 
 import (
 	"encoding/json"

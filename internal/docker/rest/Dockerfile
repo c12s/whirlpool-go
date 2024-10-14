@@ -5,8 +5,12 @@ WORKDIR /app
 COPY . .
 
 RUN go mod init test_rest
-RUN go build -o main.go .
+RUN GOOS=linux go build -o main .
+
+RUN chmod +x main
+
+RUN ls -la
 
 EXPOSE 8080
 
-ENTRYPOINT ["./dummy-server"]
+ENTRYPOINT ./main
